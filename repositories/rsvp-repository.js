@@ -60,20 +60,6 @@ exports.getDeclineGuestCount = function(next) {
 	);
 };
 
-exports.getIowaGuestCount = function(next) {
-
-	db.Rsvp.aggregate(
-		{ $match: { iowa: true } },
-		{ $group: { _id: null, 
-		            guestCount: { $sum: "$guestCount" }
-		          }
-		}, function (err, result) {
-			if (err) return handleErrorFor(err, next);
-			next(null, guestCountFrom(result));
-		}
-	);
-};
-
 
 function handleErrorFor(err, next) {
 

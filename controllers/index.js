@@ -5,7 +5,7 @@ var rsvpRepo = require('../repositories/rsvp-repository');
 exports.index = function(req, res) {
 
 	res.render('index', { 
-		title: 'Shea & Lindsey\'s Wedding',
+		title: 'Charlene & Max\'s Wedding',
 		pollError: req.query.error,
 		pollDone: req.query.poll
 	});
@@ -13,44 +13,44 @@ exports.index = function(req, res) {
 
 exports.pollPost = function(req, res) {
 		
-	var pollResponse = new db.Poll({
-		florida:  userIsGoingTo('florida', req),
-		iowa:     userIsGoingTo('iowa', req),
-		notGoing: userIsGoingTo('notgoing', req),	
-		date:     new Date()
-	});
+	//var pollResponse = new db.Poll({
+	//	florida:  userIsGoingTo('florida', req),
+	//	iowa:     userIsGoingTo('iowa', req),
+	//	notGoing: userIsGoingTo('notgoing', req),	
+	//	date:     new Date()
+	//});
 	
-	pollResponse.save(function (err) { 
-		if (err) {
-			console.log('ERROR saving poll.');
-			console.log(err);
-			res.redirect('/?error=verymuchyes');
-		} else {
-			res.redirect('/?poll=done');
-		}
-	});
+	//pollResponse.save(function (err) { 
+	//	if (err) {
+	//		console.log('ERROR saving poll.');
+	//		console.log(err);
+	//		res.redirect('/?error=verymuchyes');
+	//	} else {
+	//		res.redirect('/?poll=done');
+	//	}
+	//});
 };
 
-exports.florida = function(req, res) {
+exports.wedding = function(req, res) {
 
-	res.render('florida', { 
-		title: 'Florida - Shea & Lindsey\'s Wedding',
-        currentPage: 'florida'
+	res.render('wedding', { 
+		title: 'Wedding - Charlene & Max\'s Wedding',
+        currentPage: 'wedding'
     });
 };
 
-exports.iowa = function(req, res) {
+exports.reception = function(req, res) {
 
-	res.render('iowa', { 
-		title: 'Iowa - Shea & Lindsey\'s Wedding',
-        currentPage: 'iowa'
+	res.render('reception', { 
+		title: 'Reception - Charlene & Max\'s Wedding',
+        currentPage: 'reception'
     });
 };
 
 exports.registry = function(req, res) {
 
 	res.render('registry', { 
-		title: 'Registry - Shea & Lindsey\'s Wedding',
+		title: 'Registry - Charlene & Max\'s Wedding',
         currentPage: 'registry'
     });
 };
@@ -58,7 +58,7 @@ exports.registry = function(req, res) {
 exports.photos = function(req, res) {
 
 	res.render('photos', { 
-		title: 'Photos - Shea & Lindsey\'s Wedding',
+		title: 'Photos - Charlene & Max\'s Wedding',
         currentPage: 'photos'
     });
 };
@@ -66,7 +66,7 @@ exports.photos = function(req, res) {
 exports.rsvp = function(req, res) {
 
 	res.render('rsvp', { 
-		title: 'RSVP - Shea & Lindsey\'s Wedding',
+		title: 'RSVP - Charlene & Max\'s Wedding',
         currentPage: 'rsvp'
     });
 };
@@ -76,7 +76,7 @@ exports.rsvpPost = function(req, res) {
 	if (!req.body.emailAddress || req.body.emailAddress.indexOf("@") == -1) {
 	
 		return res.render('rsvp', { 
-			title: 'RSVP - Shea & Lindsey\'s Wedding',
+			title: 'RSVP - Charlene & Max\'s Wedding',
 			currentPage: 'rsvp',
 			message: 'Please enter a valid email address!'
 		});
@@ -115,7 +115,7 @@ exports.rsvpPost = function(req, res) {
 exports.rsvpLinkSent = function(req, res) {
 	
 	res.render('rsvp-linksent', {
-		title: 'RSVP Link Sent - Shea & Lindsey\'s Wedding',
+		title: 'RSVP Link Sent - Charlene & Max\'s Wedding',
 		currentPage: 'rsvp'
 	});
 }
@@ -125,12 +125,30 @@ exports.rsvpDetail = function(req, res) {
 	rsvpRepo.getByRsvpId(req.params.id, function(err, rsvp) {
 	
 		if (err) return renderErrorFor(err, res);
-		if (!rsvp) return renderErrorFor('RSVP not found: ' + req.params.id, res);
+        if (!rsvp) return renderErrorFor('RSVP not found: ' + req.params.id, res);
+        
+        var fullSongName = rsvp.song;
+        var songTitle = '';
+        var songArtist = '';
+        
+        if (fullSongName) {
+            var parts = fullSongName.split(" - ");
+
+            if (parts.length == 1) {
+                songArtist = parts[0];
+            }
+            else {
+                songArtist = parts[0];
+                songTitle = parts[1];
+            }
+        }
 	
 		res.render('rsvp-detail', {
-			title: 'RSVP - Shea & Lindsey\'s Wedding',
+			title: 'RSVP - Charlene & Max\'s Wedding',
 			currentPage: 'rsvp',
-			rsvp: rsvp
+            rsvp: rsvp,
+            songtitle: songArtist,
+            songartist: songTitle 
 		});
 	});
 };
@@ -144,8 +162,21 @@ exports.rsvpDetailPost = function(req, res) {
 	
 		rsvp.name = req.body.rsvpName;
 		rsvp.accept = userRSVPed('accept', req);
-		rsvp.iowa = userRSVPed('iowa', req);
-		rsvp.decline = userRSVPed('decline', req);
+        rsvp.decline = userRSVPed('decline', req);
+        
+        var songTitle = req.body.rsvpSongTitle;
+        
+        var songArtist = req.body.rsvpSongArtist;
+        
+        if (songTitle) {
+            if (songArtist) {
+                rsvp.song = songArtist + ' - ' + songTitle;
+            }
+            else {
+                rsvp.song = songTitle;
+            }
+        }
+
 		rsvp.note = req.body.rsvpNote;
 		
 		rsvp.guests = [];
@@ -161,7 +192,7 @@ exports.rsvpDetailPost = function(req, res) {
 		if (!rsvp.name) {
 			return renderValidationErrorFor(rsvp, 'Please enter your name.', res);
 		}
-		if (!rsvp.accept && !rsvp.iowa && !rsvp.decline) {
+		if (!rsvp.accept && !rsvp.decline) {
 			return renderValidationErrorFor(rsvp, "Please let us know if you're coming!", res);
 		}
 		
@@ -184,7 +215,7 @@ exports.rsvpThanks = function(req, res) {
 		if (err) return renderErrorFor(err, res);
 		
 		res.render('rsvp-thanks', {
-			title: 'Thanks for the RSVP - Shea & Lindsey\'s Wedding',
+			title: 'Thanks for the RSVP - Charlene & Max\'s Wedding',
 			currentPage: 'rsvp',
 			rsvp: rsvp
 		});
@@ -208,7 +239,7 @@ function renderErrorFor(err, res) {
 	console.error(err);
 
 	res.render('error', {
-		title: 'Error - Shea & Lindsey\'s Wedding',
+		title: 'Error - Charlene & Max\'s Wedding',
 		error: 'There was an unexpected problem with your request.'
 	});
 }
@@ -216,7 +247,7 @@ function renderErrorFor(err, res) {
 function renderValidationErrorFor(rsvp, message, res) {
 
 	return res.render('rsvp-detail', { 
-		title: 'RSVP - Shea & Lindsey\'s Wedding',
+		title: 'RSVP - Charlene & Max\'s Wedding',
 		currentPage: 'rsvp',
 		message: message,
 		rsvp: rsvp

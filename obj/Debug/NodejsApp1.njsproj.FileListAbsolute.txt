@@ -1,0 +1,2 @@
+C:\Users\Max\Desktop\Wedding-Website-master\obj\Debug\NodejsApp1.njsprojResolveAssemblyReference.cache
+C:\Users\Max\Desktop\Wedding-Website-master\bin\Microsoft.NodejsTools.WebRole.dll

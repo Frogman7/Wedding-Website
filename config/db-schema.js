@@ -9,7 +9,7 @@ var SALT_WORK_FACTOR = 10;
 var uriString =
 	process.env.MONGOLAB_URI ||
 	process.env.MONGOHQ_URL ||
-	'mongodb://localhost/wedding';
+	'mongodb://max:Frogman7@ds031108.mongolab.com:31108/weddingdb';
 	
 mongoose.connect(uriString, null, function(err, res) {
 
@@ -70,17 +70,18 @@ exports.Poll = PollModel;
 // -----------------------------------------------------------------------------
 
 var rsvpSchema = new Schema({
-	rsvpId:       { type: String, unique: true },
-	emailAddress: { type: String, required: true, unique: true },
-	name:         String,
-	accept:       Boolean,
-	iowa:         Boolean,
-	decline:      Boolean,
-	guestCount:   { type: Number, required: true, min: 0 },
-	guests:       [String],
-	note:         String,
-	createDate:   { type: Date, default: Date.now },
-	updateDate:   { type: Date, default: Date.now }
+	rsvpId:         { type: String, unique: true },
+	emailAddress:   { type: String, required: true, unique: true },
+	name:           String,
+    accept:         Boolean,
+    decline:        Boolean,
+	guestCount:     { type: Number, required: true, min: 0 },
+    guests:         [String],
+    song:           String,
+    announcements:  Boolean,
+	note:           String,
+	createDate:     { type: Date, default: Date.now },
+	updateDate:     { type: Date, default: Date.now }
 });
 
 rsvpSchema.pre('save', function(next) {

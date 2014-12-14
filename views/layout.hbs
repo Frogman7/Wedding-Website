@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <!--[if IE 8]> <html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 
@@ -19,32 +19,29 @@
 
 	<header>
 		<div class="row">
-	
-			<div class="large-3 columns">
-		
+			<div class="large-2 columns">
 				<h1>
 					<a href="/"><img src="/images/logo.png" alt="Shea + Lindsey's Wedding" /></a>
 				</h1>
-		
 			</div>
 		
-			<div class="large-9 columns">
+			<div class="large-10 columns">
 		
 				{{! todo - replace this with a macro or some other sort of thing for dynamic navigation }}
 		
 				<ul class="inline-list right">
 					<li>
-						{{#ifCond currentPage 'florida'}}
-							<a class="selected" href="/florida">Florida</a>
+						{{#ifCond currentPage 'wedding'}}
+							<a class="selected" href="/wedding">Wedding</a>
 						{{else}}
-							<a href="/florida">Florida</a>
+							<a href="/wedding">Wedding</a>
 						{{/ifCond}}
 					</li>
 					<li>
-						{{#ifCond currentPage 'iowa'}}
-							<a class="selected" href="/iowa">Iowa</a>
+						{{#ifCond currentPage 'reception'}}
+							<a class="selected" href="/reception">Reception</a>
 						{{else}}
-							<a href="/iowa">Iowa</a>
+							<a href="/reception">Reception</a>
 						{{/ifCond}}
 					</li>
 					<li>
@@ -92,14 +89,14 @@
 				</p>		
 		
 				<p id="copyright">
-					&copy; {{year}} Shea Daniels
+					&copy; {{year}} Max Blumenthal
 				</p>
 		
 			</div>
 			
 			<div class="large-3 small-3 columns">
-				<div class="tiki">
-					<img src="/images/tiki.png" alt="" />
+				<div>
+					<img src="/images/Redwood.png" alt="Redwood Tree" />
 				</div>
 			</div>			
 			

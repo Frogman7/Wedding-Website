@@ -38,7 +38,7 @@ if ('development' == app.get('env')) {
 app.use(function(req, res, next){
 	res.status(404);
 	res.render('error', {
-		title: '404 - Shea & Lindsey\'s Wedding',
+		title: '404 - Charlene & Max\'s Wedding',
 		error: 'We couldn\'t find the page you were looking for!'
 	});
 });
@@ -46,8 +46,8 @@ app.use(function(req, res, next){
 // routing
 app.get('/', indexController.index);
 app.post('/poll', indexController.pollPost);
-app.get('/florida', indexController.florida);
-app.get('/iowa', indexController.iowa);
+app.get('/wedding', indexController.wedding);
+app.get('/reception', indexController.reception);
 app.get('/registry', indexController.registry);
 app.get('/photos', indexController.photos);
 

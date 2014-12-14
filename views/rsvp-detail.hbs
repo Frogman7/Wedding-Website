@@ -1,234 +1,247 @@
 <div id="rsvp-banner" class="banner">
-	<div class="row">
-		<div class="large-12 columns">
-			<h2>
-				RSVP
-			</h2>
-		</div>
-	</div>
+    <div class="row">
+        <div class="large-12 columns">
+            <h2>
+                RSVP
+            </h2>
+        </div>
+    </div>
 </div>
 
 <div class="date-row row">
-	<div class="large-12 columns">
-		<h3>APRIL 26<sup>TH</sup>, 2014 <i class="fa fa-circle"></i> BRADENTON BEACH, FL</h3>
-	</div>
+    <div class="large-12 columns">
+        <h3>October 10<sup>TH</sup>, 2015 <i class="fa fa-circle"></i> Shady Cove, OR</h3>
+    </div>
 </div>
 
 <div class="row">
-	<div class="large-12 columns">
-		{{#if message}}
-			<div data-alert class="alert-box alert radius">
-			  
-			  {{message}}
-			  
-			  <a href="#" class="close">&times;</a>
-			</div>
-		{{/if}}
-	</div>
+    <div class="large-12 columns">
+        {{#if message}}
+        <div data-alert class="alert-box alert radius">
+
+            {{message}}
+
+            <a href="#" class="close">&times;</a>
+        </div>
+        {{/if}}
+    </div>
 </div>
 
 <form action="/rsvp/detail/{{rsvp.rsvpId}}" method="post">
 
-	<div class="row">
-		<div class="large-12 columns">
-			<h3>Let's get your info!</h3>
-		</div>
-	</div>
+    <div class="row">
+        <div class="large-12 columns">
+            <h3>Let's get your info!</h3>
+        </div>
+    </div>
 
-	<div class="row">
-		<div class="large-6 columns">
-	
-			<div>
-				<label for="rsvpName">Your name:</label>
-				<input id="rsvpName" type="text" name="rsvpName" value="{{rsvp.name}}"/>
-			</div>
-	
-		</div>
+    <div class="row">
+        <div class="large-6 columns">
 
-		<div class="large-6 columns">
-	
-			<label class="radio-label" for="rsvp-accept">
-				{{#if rsvp.accept}}
-					<input type="radio" id="rsvp-accept" name="rsvpAnswer" value="accept" checked="checked" />
-				{{else}}
-					<input type="radio" id="rsvp-accept" name="rsvpAnswer" value="accept" />
-				{{/if}}
-				&nbsp;
-				Accept with pleasure
-			</label>
-			<label class="radio-label" for="rsvp-iowa">
-				{{#if rsvp.iowa}}
-					<input type="radio" id="rsvp-iowa" name="rsvpAnswer" value="iowa" checked="checked" />
-				{{else}}
-					<input type="radio" id="rsvp-iowa" name="rsvpAnswer" value="iowa" />
-				{{/if}}
-				&nbsp;
-				Hope to see you in Iowa for the June Reception...
-			</label>
-			<label class="radio-label" for="rsvp-decline">
-				{{#if rsvp.decline}}
-					<input type="radio" id="rsvp-decline" name="rsvpAnswer" value="decline" checked="checked" />
-				{{else}}
-					<input type="radio" id="rsvp-decline" name="rsvpAnswer" value="decline" />
-				{{/if}}
-				&nbsp;
-				Regretfully decline
-			</label>
-	
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="large-12 columns">
-			<h3>Guests in your party</h3>
-		</div>
-	</div>
-	
-	<div class="row">
-		<div id="rsvp-guest" class="large-6 columns">
-	
-			<div>
-				<p>You, the incredible person that you are, plus...</p>
-			</div>
-			<div>
-				<input id="guest1" type="text" name="guests[1]" style="display:none;" value="{{rsvp.guests.[0]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest2" type="text" name="guests[2]" style="display:none;" value="{{rsvp.guests.[1]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest3" type="text" name="guests[3]" style="display:none;" value="{{rsvp.guests.[2]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest4" type="text" name="guests[4]" style="display:none;" value="{{rsvp.guests.[3]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest5" type="text" name="guests[5]" style="display:none;" value="{{rsvp.guests.[4]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest6" type="text" name="guests[6]" style="display:none;" value="{{rsvp.guests.[5]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest7" type="text" name="guests[7]" style="display:none;" value="{{rsvp.guests.[6]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest8" type="text" name="guests[8]" style="display:none;" value="{{rsvp.guests.[7]}}" placeholder="Guest Name"/>
-			</div>
-			<div>
-				<input id="guest9" type="text" name="guests[9]" style="display:none;" value="{{rsvp.guests.[8]}}" placeholder="Guest Name"/>
-			</div>
-			
-			<button id="add-guest" type="button" class="button small round">Add Another Guest</button>
-	
-		</div>
+            <div>
+                <label for="rsvpName">Your name:</label>
+                <input id="rsvpName" type="text" name="rsvpName" value="{{rsvp.name}}" />
+            </div>
 
-		<div id="number-attending" class="large-6 columns">
-			number attending
-			<br/>
-			<br/>
-			<div id="number-attending-count">
-				1
-			</div>
-		</div>
-	</div>
-	<br/>
+        </div>
 
-	<div class="row">
-		<div class="large-12 columns">
-	
-			<h3>Write us a note</h3>
-			<div>
-				<textarea id="rsvpNote" name="rsvpNote">{{rsvp.note}}</textarea>
-			</div>
-			<br/>
-			<div>
-				<button type="submit" class="button round">Save your RSVP</button>
-			</div>		
+        <div class="large-6 columns">
 
-			<input id="rsvpId" type="hidden" name="rsvpId" value="{{rsvp.rsvpId}}"/>
-	
-		</div>
-	</div>
-	
+            <label class="radio-label" for="rsvp-accept">
+                {{#if rsvp.accept}}
+                <input type="radio" id="rsvp-accept" name="rsvpAnswer" value="accept" checked="checked" />
+                {{else}}
+                <input type="radio" id="rsvp-accept" name="rsvpAnswer" value="accept" />
+                {{/if}}
+                &nbsp;
+                Accept with pleasure
+            </label>
+            <label class="radio-label" for="rsvp-decline">
+                {{#if rsvp.decline}}
+                <input type="radio" id="rsvp-decline" name="rsvpAnswer" value="decline" checked="checked" />
+                {{else}}
+                <input type="radio" id="rsvp-decline" name="rsvpAnswer" value="decline" />
+                {{/if}}
+                &nbsp;
+                Regretfully decline
+            </label>
+
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h3>Guests in your party</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div id="rsvp-guest" class="large-6 columns">
+
+            <div>
+                <p>You, the incredible person that you are, plus...</p>
+            </div>
+            <div>
+                <input id="guest1" type="text" name="guests[1]" style="display:none;" value="{{rsvp.guests.[0]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest2" type="text" name="guests[2]" style="display:none;" value="{{rsvp.guests.[1]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest3" type="text" name="guests[3]" style="display:none;" value="{{rsvp.guests.[2]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest4" type="text" name="guests[4]" style="display:none;" value="{{rsvp.guests.[3]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest5" type="text" name="guests[5]" style="display:none;" value="{{rsvp.guests.[4]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest6" type="text" name="guests[6]" style="display:none;" value="{{rsvp.guests.[5]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest7" type="text" name="guests[7]" style="display:none;" value="{{rsvp.guests.[6]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest8" type="text" name="guests[8]" style="display:none;" value="{{rsvp.guests.[7]}}" placeholder="Guest Name" />
+            </div>
+            <div>
+                <input id="guest9" type="text" name="guests[9]" style="display:none;" value="{{rsvp.guests.[8]}}" placeholder="Guest Name" />
+            </div>
+
+            <button id="add-guest" type="button" class="button small round">Add Another Guest</button>
+
+        </div>
+
+        <div id="number-attending" class="large-6 columns">
+            number attending
+            <br />
+            <br />
+            <div id="number-attending-count">
+                1
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h3>Recommend a song for the wedding reception</h3>
+            <label>Song Title:</label>
+            <input id="rsvpSongTitle" type="text" name="rsvpSongTitle" value="{{songtitle}}"/>
+            <label>By Artist:</label>
+            <input id="rsvpSongArtist" type="text" name="rsvpSongArtist" value="{{songartist}}"/>
+            <h5>Note: Explicit songs will be censored</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+
+            <h3>Write us a note</h3>
+            <div>
+                <textarea id="rsvpNote" name="rsvpNote">{{rsvp.note}}</textarea>
+            </div>
+            <br />
+            <div class="row">
+                <div class="large-12 columns">
+                    <label>
+                        {{#if rsvp.announcements}}
+                        <input type="checkbox" class="checkbox" id="rsvp-annoucements" name="rsvpAnnoucements" value="accept" checked="checked" />
+                        {{else}}
+                        <input type="checkbox" class="checkbox" id="rsvp-annoucements" name="rsvpAnnoucements" value="accept" />
+                        {{/if}}
+                        &nbsp;
+                        Recieve wedding updates/annoucements through email
+                    </label>
+                </div>
+            </div>
+            <br />
+            <div>
+                <button type="submit" class="button round">Save your RSVP</button>
+            </div>
+            <input id="rsvpId" type="hidden" name="rsvpId" value="{{rsvp.rsvpId}}" />
+        </div>
+    </div>
 </form>
-<br/>
+<br />
 
 {{#extend "scripts"}}
 
 <script type="text/javascript">
-	$(document).ready(function() {
+    $(document).ready(function () {
 
-		function setFocus() {
-		
-			var $nameInput = $('#rsvpName');
-			
-			if ($.trim($nameInput.val()) == '') {
-				$nameInput.focus();
-			}
-		}
+        function setFocus() {
 
-		function hideButton() {
-			if ($('#guest9').is(':visible')) {
-				$('#add-guest').hide();
-			}
-		}
-		
-		function showTextFields() {
-			
-			// loop backwards, start showing once we find input
-			var showInput = false;
-			for (var i=9; i > 0; i--) {
-				
-				var $currInput = $('#guest' + i);
-				
-				if ($.trim($currInput.val()) != '') {
-					showInput = true;
-				}
-				
-				if (showInput) {
-					$currInput.show();
-				}
-			}
-		}
-		
-		function updateGuestCount() {
-			
-			var guestCount = $('#rsvp-guest input').filter(function() {
-				return $.trim($(this).val()) != '';
-			}).length;
-			guestCount++;
-			
-			$('#number-attending-count').html(guestCount);
-		}
+            var $nameInput = $('#rsvpName');
 
-		// startup
-		setFocus();
-		showTextFields();
-		hideButton();
-		updateGuestCount();
-	
-		// event bindings
-		$('#add-guest').click(function() {
-	
-			// find the first available guest input and show it
-			for (var i=1; i < 10; i++) {
-		
-				var $currInput = $('#guest' + i);
-			
-				if (!$currInput.is(':visible')) {
-					$currInput.show();
-					break;
-				}
-			}
-		
-			hideButton();
-		});
-		
-		$('#rsvp-guest input').bind('keyup input change propertychange', function(e) {
-			updateGuestCount();
-		});
+            if ($.trim($nameInput.val()) == '') {
+                $nameInput.focus();
+            }
+        }
 
-	});
+        function hideButton() {
+            if ($('#guest9').is(':visible')) {
+                $('#add-guest').hide();
+            }
+        }
+
+        function showTextFields() {
+
+            // loop backwards, start showing once we find input
+            var showInput = false;
+            for (var i = 9; i > 0; i--) {
+
+                var $currInput = $('#guest' + i);
+
+                if ($.trim($currInput.val()) != '') {
+                    showInput = true;
+                }
+
+                if (showInput) {
+                    $currInput.show();
+                }
+            }
+        }
+
+        function updateGuestCount() {
+
+            var guestCount = $('#rsvp-guest input').filter(function () {
+                return $.trim($(this).val()) != '';
+            }).length;
+            guestCount++;
+
+            $('#number-attending-count').html(guestCount);
+        }
+
+        // startup
+        setFocus();
+        showTextFields();
+        hideButton();
+        updateGuestCount();
+        setSongName();
+
+        // event bindings
+        $('#add-guest').click(function () {
+
+            // find the first available guest input and show it
+            for (var i = 1; i < 10; i++) {
+
+                var $currInput = $('#guest' + i);
+
+                if (!$currInput.is(':visible')) {
+                    $currInput.show();
+                    break;
+                }
+            }
+
+            hideButton();
+        });
+
+        $('#rsvp-guest input').bind('keyup input change propertychange', function (e) {
+            updateGuestCount();
+        });
+
+    });
 </script>
-
 {{/extend}}

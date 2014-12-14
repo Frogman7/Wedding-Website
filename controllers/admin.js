@@ -8,7 +8,7 @@ exports.index = function(req, res) {
 	req.session.message = null;
 
 	res.render('admin', { 
-		title: 'Admin Login - Shea & Lindsey\'s Wedding',
+		title: 'Admin Login - Charlene & Max\'s Wedding',
 		layout: '',
 		message: message,
 		username: req.body.username
@@ -39,13 +39,12 @@ exports.dashboard = function(req, res) {
 
 	async.parallel(
 		{
-			pollTotalCount: pollRepo.getTotalCount,
-			pollFloridaCount: pollRepo.getFloridaCount,
-			pollIowaCount: pollRepo.getIowaCount,
-			pollNotGoingCount: pollRepo.getNotGoingCount,
+			//pollTotalCount: pollRepo.getTotalCount,
+			//pollFloridaCount: pollRepo.getFloridaCount,
+			//pollIowaCount: pollRepo.getIowaCount,
+			//pollNotGoingCount: pollRepo.getNotGoingCount,
 			rsvpTotalCount: rsvpRepo.getTotalCount,
 			rsvpAcceptGuestCount: rsvpRepo.getAcceptGuestCount,
-			rsvpIowaGuestCount: rsvpRepo.getIowaGuestCount,
 			rsvpDeclineGuestCount: rsvpRepo.getDeclineGuestCount
 		},
 		function(err, data) {
@@ -53,19 +52,19 @@ exports.dashboard = function(req, res) {
 			if (err) renderErrorFor(err, res);
 		
 			res.render('admin-dashboard', { 
-				title: 'Admin - Shea & Lindsey\'s Wedding',
+				title: 'Admin - Charlene & Max\'s Wedding',
 				layout: 'admin-layout',
 				user: req.user,
-				poll: { 
-					totalCount: data.pollTotalCount,
-					floridaCount: data.pollFloridaCount,
-					iowaCount: data.pollIowaCount,
-					notGoingCount: data.pollNotGoingCount
-				},
+				//poll: { 
+				//	totalCount: data.pollTotalCount,
+				//	floridaCount: data.pollFloridaCount,
+				//	iowaCount: data.pollIowaCount,
+				//	notGoingCount: data.pollNotGoingCount
+				//},
 				rsvp: {
 					totalCount: data.rsvpTotalCount,
 					acceptGuestCount: data.rsvpAcceptGuestCount,
-					iowaGuestCount: data.rsvpIowaGuestCount,
+					//iowaGuestCount: data.rsvpIowaGuestCount,
 					declineGuestCount: data.rsvpDeclineGuestCount
 				}
 			});
@@ -80,7 +79,7 @@ exports.rsvp = function(req, res) {
 		if (err) return renderErrorFor(err, res);
 	
 		res.render('admin-rsvp', { 
-			title: 'RSVP - Admin - Shea & Lindsey\'s Wedding',
+			title: 'RSVP - Admin - Charlene & Max\'s Wedding',
 			layout: 'admin-layout',
 			currentPage: 'rsvp',
 			rsvps: rsvps
@@ -95,7 +94,7 @@ exports.poll = function(req, res) {
 		if (err) return renderErrorFor(err, res);
 		
 		res.render('admin-poll', { 
-			title: 'Poll - Admin - Shea & Lindsey\'s Wedding',
+			title: 'Poll - Admin - Charlene & Max\'s Wedding',
 			layout: 'admin-layout',
 			currentPage: 'poll',
 			pollResponses: responses
@@ -112,7 +111,7 @@ exports.logout = function(req, res) {
 function renderErrorFor(err, res) {
 
 	res.render('error', {
-		title: 'Error - Admin - Shea & Lindsey\'s Wedding',
+		title: 'Error - Admin - Charlene & Max\'s Wedding',
 		layout: 'admin-layout',
 		error: err
 	});

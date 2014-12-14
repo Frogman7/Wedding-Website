@@ -48,9 +48,9 @@ exports.ensureAuthenticated = function ensureAuthenticated(req, res, next) {
 function getUser() {
 	
 	var user = new db.User({
-		username: 'sddaniels',
+		username: 'mcblumenthal',
 		password: '$2a$10$vjxoqB0JAeyA8lNliPbZXecIXVvT0cKmE/YjZ/t3.UASFcbVOVleC',
-		name:     'Shea'
+		name:     'Max'
 	});
 	
 	return user;

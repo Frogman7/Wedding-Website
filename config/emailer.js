@@ -27,8 +27,8 @@ exports.sendRsvpLinkTo = function(emailAddress, rsvpId, next) {
 	var email = new Email({
 		to:       emailAddress,
 		from:     process.env.EMAIL_FROM_ADDRESS,
-		fromname: 'Lindsey & Shea',
-		subject:  "RSVP Link for Shea & Lindsey's Wedding"
+		fromname: 'Charlene & Max',
+		subject:  "RSVP Link for Charlene & Max's Wedding"
 	});
 	
 	email.setHtml([
@@ -39,10 +39,10 @@ exports.sendRsvpLinkTo = function(emailAddress, rsvpId, next) {
 		'<a href="http://www.sheaslounge.com/rsvp/detail/' + rsvpId + '">Update Your RSVP</a>',
 		'</p>',
 		'',
-		'<p>Please let Shea know if you have any trouble.</p>',
+		'<p>Please let Max know if you have any trouble.</p>',
 		'',
 		'<p>Thanks,<br/>',
-		'Shea & Lindsey</p>'
+		'Max & Charlene</p>'
 	].join("\r\n"));
 
 	sendgrid.send(email, function(err, json) {
@@ -61,9 +61,9 @@ exports.sendConfirmationFor = function(rsvp, next) {
 	var email = new Email({
 		to:       rsvp.emailAddress,
 		from:     process.env.EMAIL_FROM_ADDRESS,
-		fromname: 'Lindsey & Shea',
+		fromname: 'Charlene & Max',
 		bcc:      process.env.EMAIL_FROM_ADDRESS,
-		subject:  "RSVP Confirmation for Shea & Lindsey's Wedding"
+		subject:  "RSVP Confirmation for Charlene & Max's Wedding"
 	});
 	
 	email.setHtml([
@@ -85,7 +85,7 @@ exports.sendConfirmationFor = function(rsvp, next) {
 		'</p>',
 		'',
 		'<p>Thanks,<br/>',
-		'Shea & Lindsey</p>'
+		'Charlene & Max</p>'
 	].join("\r\n"));
 
 	sendgrid.send(email, function(err, json) {
@@ -103,14 +103,12 @@ exports.sendConfirmationFor = function(rsvp, next) {
 function buildConfirmationContent(rsvp) {
 
 	if (rsvp.accept) {
-		return '<p>You said you were coming to Florida with a party of ' + rsvp.guestCount +
+		return '<p>You said you were coming with a party of ' + rsvp.guestCount +
 		       '. See you on the beach!</p>';
-	} else if (rsvp.iowa) {
-		return '<p>You said you couldn\'t make it to Florida, but you\'d try to make it to Iowa for our casual reception in June.</p>';
 	} else if (rsvp.decline) {
 		return '<p>You said you couldn\'t make it. We\'ll miss you! Hopefully we will get a chance to catch up sometime.</p>';
 	} else {
-		return '<p>It looks like we may have had a problem saving whether you\'d be able to come or not. Please try again using the link below or contact Shea.</p>';
+		return '<p>It looks like we may have had a problem saving whether you\'d be able to come or not. Please try again using the link below or contact Max.</p>';
 	}
 
 }
