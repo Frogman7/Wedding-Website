@@ -1,6 +1,8 @@
 var mailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
+console.info("Account: " + process.env.ACCOUNT + " Password " + process.env.PASSWORD)
+
 var transporter = mailer.createTransport(smtpTransport({
     transport: "SMTP",
     host: "smtp.gmail.com",

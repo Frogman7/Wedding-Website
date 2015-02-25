@@ -75,25 +75,25 @@
 				</div>
 			{{else}}
 				<p>
-					Please take a minute and help us get a handle on who will be able to come. 
-					This is not the RSVP!
+					Please help us estimate the number of people who intend to drink
+                    (alcoholic of course) at the reception by taking the poll.
 				</p>
 		
 				<form method="post" action="/poll">
-					<label class="radio-label" for="poll-florida">
-						<input type="radio" id="poll-florida" name="poll" value="florida" />
+					<label class="radio-label" for="poll-drinking">
+						<input type="radio" id="poll-florida" name="poll" value="drinking" />
 						&nbsp;
-						We think we can make it to Florida.
+						Will definately be drinking!
 					</label>
-					<label class="radio-label" for="poll-iowa">
-						<input type="radio" id="poll-iowa" name="poll" value="iowa" />
+					<label class="radio-label" for="poll-fewdrinks">
+						<input type="radio" id="poll-iowa" name="poll" value="fewdrinks" />
 						&nbsp;
-						We'll see you in Iowa instead!
+						Might have a few drinks.
 					</label>
-					<label class="radio-label" for="poll-notgoing">
-						<input type="radio" id="poll-notgoing" name="poll" value="notgoing" />
+					<label class="radio-label" for="poll-nodrinks">
+						<input type="radio" id="poll-notgoing" name="poll" value="nodrinks" />
 						&nbsp;
-						We can't make it at all.
+						Won't be drinking.
 					</label>
 				
 					<button type="submit" class="button small round">Submit Poll</button>
