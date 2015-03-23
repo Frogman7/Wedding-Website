@@ -8,8 +8,7 @@ var SALT_WORK_FACTOR = 10;
 // connectify up in here!
 var uriString =
 	process.env.MONGOLAB_URI ||
-	process.env.MONGOHQ_URL ||
-	'mongodb://max:Frogman7@ds031108.mongolab.com:31108/weddingdb';
+	process.env.MONGOHQ_URL;
 	
 mongoose.connect(uriString, null, function(err, res) {
 

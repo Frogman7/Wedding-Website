@@ -13,22 +13,22 @@ exports.index = function(req, res) {
 
 exports.pollPost = function(req, res) {
 		
-	//var pollResponse = new db.Poll({
-	//	florida:  userIsGoingTo('florida', req),
-	//	iowa:     userIsGoingTo('iowa', req),
-	//	notGoing: userIsGoingTo('notgoing', req),	
-	//	date:     new Date()
-	//});
+	var pollResponse = new db.Poll({
+		florida:  userPlansTo('florida', req),
+		iowa:     userPlansTo('iowa', req),
+		notGoing: userPlansTo('notgoing', req),	
+		date:     new Date()
+	});
 	
-	//pollResponse.save(function (err) { 
-	//	if (err) {
-	//		console.log('ERROR saving poll.');
-	//		console.log(err);
-	//		res.redirect('/?error=verymuchyes');
-	//	} else {
-	//		res.redirect('/?poll=done');
-	//	}
-	//});
+	pollResponse.save(function (err) { 
+		if (err) {
+			console.log('ERROR saving poll.');
+			console.log(err);
+			res.redirect('/?error=verymuchyes');
+		} else {
+			res.redirect('/?poll=done');
+		}
+	});
 };
 
 exports.wedding = function(req, res) {
@@ -195,6 +195,10 @@ exports.rsvpDetailPost = function(req, res) {
 		if (!rsvp.accept && !rsvp.decline) {
 			return renderValidationErrorFor(rsvp, "Please let us know if you're coming!", res);
 		}
+        
+        console.info(rsvp);
+        
+        console.info(rsvp.emailAddress);
 		
 		rsvp.save(function(err) {
 		
@@ -223,9 +227,9 @@ exports.rsvpThanks = function(req, res) {
 };
 
 
-function userIsGoingTo(destination, req) {
+function userPlansTo(answer, req) {
 
-	return req.body.poll === destination;
+	return req.body.poll === answer;
 }
 
 function userRSVPed(rsvpAnswer, req) {

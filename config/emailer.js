@@ -1,8 +1,6 @@
 var mailer = require('nodemailer');
 var smtpTransport = require('nodemailer-smtp-transport');
 
-console.info("Account: " + process.env.ACCOUNT + " Password " + process.env.PASSWORD)
-
 var transporter = mailer.createTransport(smtpTransport({
     transport: "SMTP",
     host: "smtp.gmail.com",
@@ -62,9 +60,9 @@ exports.sendConfirmationFor = function(rsvp, next) {
 
     var email = {
         from: 'Max Blumenthal <' + process.env.ACCOUNT + '>',
-        to: emailAddress, // list of receivers
+        to: rsvp.emailAddress, // list of receivers
         subject: 'RSVP confirmation for Max and Charlene\'s wedding', // Subject line
-        text: 'To get back into your RSVP, please use the following link: http://mcwedding.herokuapp.com/rsvp/detail/' + rsvpId, // plaintext body
+        text: 'To get back into your RSVP, please use the following link: http://mcwedding.herokuapp.com/rsvp/detail/' + rsvp.rsvpId, // plaintext body
         html: [
             '<p>Thanks for the RSVP!</p>',
             '',

@@ -17,7 +17,7 @@
 
 <div id="home-info-boxes">
 	<div class="row">
-		<div class="large-3 columns">
+		<div class="large-4 columns">
 	
 			<span class="fa-stack fa-3x">
 				<i class="fa fa-circle fa-stack-2x"></i>
@@ -54,7 +54,7 @@
 			</p>
 	
 		</div>
-		<div class="large-3 columns">
+		<div class="large-4 columns">
 	
 			<span class="fa-stack fa-3x">
 				<i class="fa fa-circle fa-stack-2x"></i>
@@ -81,64 +81,19 @@
 		
 				<form method="post" action="/poll">
 					<label class="radio-label" for="poll-drinking">
-						<input type="radio" id="poll-florida" name="poll" value="drinking" />
+						<input type="radio" id="poll-drinking" name="poll" value="drinking" />
 						&nbsp;
 						Will definately be drinking!
 					</label>
 					<label class="radio-label" for="poll-fewdrinks">
-						<input type="radio" id="poll-iowa" name="poll" value="fewdrinks" />
+						<input type="radio" id="poll-fewdrinks" name="poll" value="fewdrinks" />
 						&nbsp;
 						Might have a few drinks.
 					</label>
 					<label class="radio-label" for="poll-nodrinks">
-						<input type="radio" id="poll-notgoing" name="poll" value="nodrinks" />
+						<input type="radio" id="poll-nodrinks" name="poll" value="nodrinks" />
 						&nbsp;
 						Won't be drinking.
-					</label>
-				
-					<button type="submit" class="button small round">Submit Poll</button>
-				</form>
-			{{/if}}
-	
-		</div>
-        <div class="large-3 columns">
-			<span class="fa-stack fa-3x">
-				<i class="fa fa-circle fa-stack-2x"></i>
-				<i class="fa fa-info fa-stack-1x fa-inverse"></i>
-			</span>	
-	
-			<h3>Take the Food Poll</h3>
-		
-			{{#if pollError}}
-				<div data-alert class="alert-box alert radius">
-					There was a problem saving the poll. Please try again!
-				</div>
-			{{/if}}
-		
-			{{#if pollDone}}
-				<div data-alert class="alert-box radius">
-					Thanks for taking the poll!
-				</div>
-			{{else}}
-				<p>
-					Please help us decide what to serve at the wedding.
-				</p>
-		
-				<form method="post" action="/poll">
-					<label class="radio-label" for="poll-drinking">
-						<input type="radio" id="poll-florida" name="poll" value="drinking" />
-						&nbsp;
-						Chicken
-					</label>
-					<label class="radio-label" for="poll-fewdrinks">
-						<input type="radio" id="poll-iowa" name="poll" value="fewdrinks" />
-						&nbsp;
-						Tri-tip
-					</label>
-					<label class="radio-label" for="poll-nodrinks">
-						<input type="radio" id="poll-notgoing" name="poll" value="nodrinks" />
-						&nbsp;
-						Pasta.
 					</label>
 				
 					<button type="submit" class="button small round">Submit Poll</button>
