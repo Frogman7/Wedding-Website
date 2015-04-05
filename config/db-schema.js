@@ -56,9 +56,9 @@ exports.User = UserModel;
 // -----------------------------------------------------------------------------
 
 var pollSchema = new Schema({
-	florida:  Boolean,
-	iowa:     Boolean,
-	notGoing: Boolean,
+	drinking:  Boolean,
+	fewdrinks:     Boolean,
+	nodrinks: Boolean,
 	date:     { type: Date, required: true }
 });
 

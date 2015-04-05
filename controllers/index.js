@@ -14,9 +14,9 @@ exports.index = function(req, res) {
 exports.pollPost = function(req, res) {
 		
 	var pollResponse = new db.Poll({
-		florida:  userPlansTo('florida', req),
-		iowa:     userPlansTo('iowa', req),
-		notGoing: userPlansTo('notgoing', req),	
+		drinking:  userPlansTo('drinking', req),
+		fewdrinks: userPlansTo('fewdrinks', req),
+		nodrinks:  userPlansTo('nodrinks', req),	
 		date:     new Date()
 	});
 	
